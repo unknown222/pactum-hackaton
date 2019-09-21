@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  background: wheat;
+
+  button {
+    position: relative;
+
+    mat-progress-bar {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+    }
+  }
+}

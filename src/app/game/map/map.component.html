@@ -1,0 +1,9 @@
+<button mat-flat-button (click)="this.trainSoldiers.emit()" [disabled]="!canTrainSoldiers() || soldiersIsTraining || !isOwner">
+
+    Train soldiers
+    <mat-progress-bar mode="indeterminate" *ngIf="soldiersIsTraining"></mat-progress-bar>
+</button>
+<button mat-flat-button (click)="this.trainWorkers.emit()" [disabled]="settlement.canBuyWorker || workersHiring || !isOwner">
+    Train workers
+    <mat-progress-bar mode="indeterminate" *ngIf="workersHiring"></mat-progress-bar>
+</button>

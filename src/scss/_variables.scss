@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 
 $cm-theme: mat-light-theme(mat-palette($mat-amber), mat-palette($mat-blue-gray));
-
+$defaultGap: 12px;
 
 
 //content breakpoints

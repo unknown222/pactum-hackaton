@@ -1,0 +1,21 @@
+<cm-header [side]="sidenav" [settlement]="settlement" [isOwner]="isOwner"></cm-header>
+<mat-sidenav-container>
+    <mat-sidenav mode="over" position="end" #sidenav>
+        <button mat-flat-button *ngFor="let neighbor of neighbors"
+                (click)="goTo(neighbor.settlement)">
+            {{ neighbor.settlement }}
+            <mat-icon *ngIf="neighbor.own">home</mat-icon>
+        </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <cm-map [settlement]="settlement"
+                [soldiersIsTraining]="soldiersIsTraining"
+                [workersHiring]="workersHiring"
+                [isOwner]="isOwner"
+                (trainSoldiers)="onTrainSoldiers()"
+                (trainWorkers)="onTrainWorkers()"></cm-map>
+        <cm-buildings [settlement]="settlement" (upgradeClick)="onUpgradeClick($event)"
+                      [isOwner]="isOwner"
+                      [isUpgrading]="isUpgrading"></cm-buildings>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -8,18 +8,34 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatIconModule } from "@angular/material/icon";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatButtonModule } from "@angular/material/button";
+import { GameService } from "./game.service";
+import { MapComponent } from './map/map.component';
+import { BuildingsComponent } from './buildings/buildings.component';
+import { IconsPipe } from "./icons.pipe";
+import { NamesPipe } from "./names.pipe";
+import { SettlementsComponent } from './settlements/settlements.component';
+import { SettlementComponent } from './settlement/settlement.component';
+import { SettlmenetResolver } from "./settlement/settlmenet.resolver";
+import { SettlementsResolver } from "./settlements/settlmenets.resolver";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 
 
 @NgModule({
-    declarations: [ GameComponent, HeaderComponent ],
+    declarations: [ GameComponent, HeaderComponent, MapComponent, BuildingsComponent, IconsPipe, NamesPipe, SettlementsComponent, SettlementComponent ],
     imports: [
         CommonModule,
         GameRoutingModule,
         MatSidenavModule,
         MatIconModule,
         FlexLayoutModule,
-        MatButtonModule
-    ]
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatProgressBarModule
+    ],
+    providers: [ GameService, SettlmenetResolver, SettlementsResolver ]
 })
 export class GameModule {
 }

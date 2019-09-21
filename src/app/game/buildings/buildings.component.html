@@ -1,0 +1,7 @@
+<div fxLayout="row">
+    <div class="building" *ngFor="let building of settlement.buildings">
+        {{ building.type | typesToIcons }} {{ building.level }}
+        <button mat-button [disabled]="!building.canUpgrade || isUpgrading || !isOwner" (click)="upgrade(building.type)">upgrade</button>
+        <mat-progress-bar mode="indeterminate" *ngIf="isInProgress(isUpgrading, building)"></mat-progress-bar>
+    </div>
+</div>

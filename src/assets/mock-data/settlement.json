@@ -1,0 +1,118 @@
+{
+  "id": "1",
+  "name": "Зажопье",
+  "resources": [
+    {
+      "type": "FOOD",
+      "amount": 1
+    },
+    {
+      "type": "ORE",
+      "amount": 1
+    },
+    {
+      "type": "WOOD",
+      "amount": 1
+    },
+    {
+      "type": "WORKERS",
+      "amount": 1
+    },
+    {
+      "type": "SOLDIERS",
+      "amount": 1
+    }
+  ],
+  "buildings": [
+    {
+      "type": "FARM",
+      "level": 1,
+      "canUpgrade": true,
+      "upgradePrice": [
+        {
+          "type": "FOOD",
+          "amount": 1
+        },
+        {
+          "type": "ORE",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "type": "LUMBER",
+      "level": 1,
+      "canUpgrade": true,
+      "upgradePrice": [
+        {
+          "type": "FOOD",
+          "amount": 1
+        },
+        {
+          "type": "ORE",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "type": "MINE",
+      "level": 1,
+      "canUpgrade": true,
+      "upgradePrice": [
+        {
+          "type": "FOOD",
+          "amount": 1
+        },
+        {
+          "type": "ORE",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "type": "CASTLE",
+      "level": 1,
+      "canUpgrade": true,
+      "upgradePrice": [
+        {
+          "type": "FOOD",
+          "amount": 1
+        },
+        {
+          "type": "ORE",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "type": "BARRACKS",
+      "level": 1,
+      "canUpgrade": true,
+      "upgradePrice": [
+        {
+          "type": "FOOD",
+          "amount": 1
+        },
+        {
+          "type": "ORE",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "type": "WALL",
+      "level": 1,
+      "canUpgrade": true,
+      "upgradePrice": [
+        {
+          "type": "FOOD",
+          "amount": 1
+        },
+        {
+          "type": "ORE",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

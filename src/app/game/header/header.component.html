@@ -1,6 +1,12 @@
-<nav>
+<nav fxLayout="row" fxLayoutAlign="center center">
+    <div *ngFor="let resource of settlement.resources" class="resource">
+        {{ resource.type | typesToNames }}: {{ resource.amount }}
+    </div>
     <div fxFlex></div>
-    <button mat-button (click)="toggleSide()">
+    <button mat-button (click)="toggleSide()" *ngIf="isOwner">
         <mat-icon>menu</mat-icon>
+    </button>
+    <button mat-button (click)="back()" *ngIf="!isOwner">
+        <mat-icon>arrow_back</mat-icon>
     </button>
 </nav>
