@@ -1,4 +1,5 @@
 @import "variables";
+
 :host {
   display: flex;
   width: 100%;
@@ -6,12 +7,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: url("/assets/login-bg.png");
+  background-size: 100% 100%;
 
   button {
     font-size: 18px;
     font-weight: 400;
-    width: 50%;
+    width: 300px;
     text-align: center;
     padding: $defaultGap/2 $defaultGap;
+    text-align: start;
+  }
+
+  .login-form {
+    background: white;
+    transform: translateY(150px);
+    padding: $defaultGap;
+    border: 1px solid black;
   }
 }

@@ -1,9 +1,11 @@
-
+<div class="login-form" fxLayout="column">
     <mat-form-field>
         <input matInput placeholder="New settlement" [formControl]="name" (keyup.enter)="createNewSettlement()">
     </mat-form-field>
 
 
-<button mat-button *ngFor="let settlement of settlements" (click)="goToSettlement(settlement)">
-    {{  settlement }}
-</button>
+    <button mat-button *ngFor="let settlement of settlements" (click)="goToSettlement(settlement)">
+        {{  settlement }}
+    </button>
+
+</div>

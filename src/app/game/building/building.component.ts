@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Building, BuildingType } from "../../entities/Building";
+import { animate, query, stagger, style, transition, trigger } from "@angular/animations";
 
 @Component({
   selector: 'cm-building',
   templateUrl: './building.component.html',
-  styleUrls: ['./building.component.scss']
+  styleUrls: ['./building.component.scss'],
 })
 export class BuildingComponent implements OnInit {
 

@@ -1,6 +1,7 @@
 <nav fxLayout="row" fxLayoutAlign="center center">
     <div *ngFor="let resource of settlement.resources" class="resource">
-        {{ resource.type | typesToNames }}: {{ resource.amount }}
+        <img [src]="resource.type | typesToIcons" [alt]="resource.type | typesToIcons">
+        {{ resource.amount }}
     </div>
     <div fxFlex></div>
     <button mat-button (click)="toggleSide()" *ngIf="isOwner">

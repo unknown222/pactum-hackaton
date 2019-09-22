@@ -6,7 +6,7 @@ import { PollingHelper } from "../utils/PollingHelper";
 export class GameService {
 
     polling$;
-    public pollingInterval = 2000;
+    public pollingInterval = 5000;
 
     constructor(private gameApi: GameApiService) {
     }

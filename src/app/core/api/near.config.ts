@@ -1,7 +1,7 @@
 const nearConfig = {
     networkId: 'default',
     nodeUrl: 'https://rpc.nearprotocol.com',
-    contractName: 'studio-a3ib4yij9',
+    contractName: 'studio-1upywevrj',
     walletUrl: 'https://wallet.nearprotocol.com',
     initialBalance: 100000000,
 };

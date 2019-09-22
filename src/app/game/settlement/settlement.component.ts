@@ -27,6 +27,7 @@ export class SettlementComponent implements OnInit, OnDestroy, AfterViewInit {
     isUpgrading;
     userId: string;
     isOwner: boolean;
+    pollingSub$;
 
     @ViewChild('sidenav', { static: false })
     sidenav: MatSidenav;
@@ -50,13 +51,15 @@ export class SettlementComponent implements OnInit, OnDestroy, AfterViewInit {
                     this.isOwner = id === settlement.owner;
                 });
                 this.updateSettlementData(settlement);
+
+                if(this.pollingSub$) {
+                    this.pollingSub$.unsubscribe();
+                }
+                setTimeout(_ => {
+                    this.pollingSub$ = this.game.startDataPoling(this.settlementId)
+                        .subscribe(settlement => this.updateSettlementData(settlement));
+                }, this.game.pollingInterval)
             });
-
-
-        setTimeout(_ => {
-            this.game.startDataPoling(this.settlementId)
-                .subscribe(settlement => this.updateSettlementData(settlement));
-        }, this.game.pollingInterval)
 
     }
 
@@ -102,6 +105,9 @@ export class SettlementComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngOnDestroy(): void {
+        if(this.pollingSub$) {
+            this.pollingSub$.unsubscribe();
+        }
         this.game.stopDataPoling();
     }
 
