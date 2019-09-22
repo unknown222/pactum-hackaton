@@ -1,2 +1,3 @@
 <button mat-flat-button color="primary" (click)="login()" *ngIf="!isLoggedIn">Login</button>
 <button mat-flat-button color="primary" (click)="signOut()" *ngIf="isLoggedIn">Logout</button>
+<button mat-flat-button color="primary" [routerLink]="['/settlement']" *ngIf="isLoggedIn">Settlements</button>

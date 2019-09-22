@@ -1,5 +1,5 @@
 import { Resource } from "./Resource";
-import { Building } from "./Building";
+import { Building, BuildingType } from "./Building";
 
 export class Settlement {
     name: string;
@@ -36,3 +36,30 @@ export class Settlement {
         return new Settlement(transformedData);
     }
 }
+
+const testBuildingData = [
+    new Building({
+        type: BuildingType.FARM,
+        level: 3,
+        canUpgrade: false,
+        price: null
+    }),
+    new Building({
+        type: BuildingType.MINE,
+        level: 3,
+        canUpgrade: false,
+        price: null
+    }),
+    new Building({
+        type: BuildingType.LUMBER,
+        level: 3,
+        canUpgrade: false,
+        price: null
+    }),
+    new Building({
+        type: BuildingType.WALL,
+        level: 1,
+        canUpgrade: false,
+        price: null
+    })
+]

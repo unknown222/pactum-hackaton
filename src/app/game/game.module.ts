@@ -20,10 +20,13 @@ import { SettlementsResolver } from "./settlements/settlmenets.resolver";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { CombatResultsComponent } from './combat-results/combat-results.component';
+import { MatDialogModule } from "@angular/material/dialog";
+import { BuildingComponent } from './building/building.component';
 
 
 @NgModule({
-    declarations: [ GameComponent, HeaderComponent, MapComponent, BuildingsComponent, IconsPipe, NamesPipe, SettlementsComponent, SettlementComponent ],
+    declarations: [ GameComponent, HeaderComponent, MapComponent, BuildingsComponent, IconsPipe, NamesPipe, SettlementsComponent, SettlementComponent, CombatResultsComponent, BuildingComponent ],
     imports: [
         CommonModule,
         GameRoutingModule,
@@ -33,9 +36,11 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
         MatButtonModule,
         ReactiveFormsModule,
         MatInputModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatDialogModule
     ],
-    providers: [ GameService, SettlmenetResolver, SettlementsResolver ]
+    providers: [ GameService, SettlmenetResolver, SettlementsResolver ],
+    entryComponents: [CombatResultsComponent]
 })
 export class GameModule {
 }

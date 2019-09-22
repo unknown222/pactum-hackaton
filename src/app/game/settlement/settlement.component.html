@@ -1,11 +1,23 @@
 <cm-header [side]="sidenav" [settlement]="settlement" [isOwner]="isOwner"></cm-header>
 <mat-sidenav-container>
     <mat-sidenav mode="over" position="end" #sidenav>
-        <button mat-flat-button *ngFor="let neighbor of neighbors"
-                (click)="goTo(neighbor.settlement)">
-            {{ neighbor.settlement }}
-            <mat-icon *ngIf="neighbor.own">home</mat-icon>
-        </button>
+        <mat-progress-bar mode="indeterminate" *ngIf="isAttacking"></mat-progress-bar>
+        <div class="settlement-item" fxLayout="row" *ngFor="let neighbor of neighbors">
+            <button mat-flat-button fxFlex="100" [disabled]="isAttacking"
+                    (click)="goTo(neighbor.settlement)">
+                {{ neighbor.settlement }}
+            </button>
+            <button mat-flat-button class="icon-button" *ngIf="neighbor.own"
+                    (click)="goTo(neighbor.settlement)" [disabled]="isAttacking">
+                <mat-icon>home</mat-icon>
+            </button>
+            <button mat-flat-button class="icon-button"
+                    [disabled]="isAttacking || !isOwner"
+                    *ngIf="!neighbor.own" (click)="attack(neighbor.settlement)">
+                <mat-icon>fast_forward</mat-icon>
+            </button>
+        </div>
+
     </mat-sidenav>
     <mat-sidenav-content>
         <cm-map [settlement]="settlement"

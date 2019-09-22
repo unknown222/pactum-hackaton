@@ -1,0 +1,8 @@
+<ng-container *ngIf="buildingConfig">
+    <img [src]="config.src" alt="" *ngFor="let config of buildingConfig"
+         [style.width]="config.width"
+         [style.top]="config.top"
+         [style.left]="config.left"
+         [style.height]="config.height"
+    >
+</ng-container>

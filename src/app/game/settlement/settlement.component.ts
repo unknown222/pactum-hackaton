@@ -6,6 +6,8 @@ import { finalize, switchMap } from "rxjs/operators";
 import { MatSidenav } from "@angular/material/sidenav";
 import { GameApiService } from "../../core/api/game-api.service";
 import { forkJoin } from "rxjs";
+import { MatDialog } from "@angular/material/dialog";
+import { CombatResultsComponent } from "../combat-results/combat-results.component";
 
 @Component({
     selector: 'cm-settlement',
@@ -18,6 +20,8 @@ export class SettlementComponent implements OnInit, OnDestroy, AfterViewInit {
     public settlement: Settlement;
     neighbors: Array<any> = [];
 
+    isAttacking = false;
+
     soldiersIsTraining;
     workersHiring;
     isUpgrading;
@@ -29,6 +33,7 @@ export class SettlementComponent implements OnInit, OnDestroy, AfterViewInit {
 
     constructor(private game: GameService,
                 private api: GameApiService,
+                private dialog: MatDialog,
                 private router: Router,
                 private route: ActivatedRoute) {
     }
@@ -103,7 +108,7 @@ export class SettlementComponent implements OnInit, OnDestroy, AfterViewInit {
     ngAfterViewInit(): void {
         this.sidenav.openedStart.subscribe(opened => {
 
-            forkJoin(this.game.getAllSettlements(), this.game.getOwnSettlements()).subscribe(([all, own]) => {
+            forkJoin(this.game.getAllSettlements(), this.game.getOwnSettlements()).subscribe(([ all, own ]) => {
                 this.neighbors = all.map(settlement => {
                     return {
                         settlement,
@@ -112,6 +117,21 @@ export class SettlementComponent implements OnInit, OnDestroy, AfterViewInit {
                 });
             });
         })
+    }
+
+    attack(name) {
+        this.isAttacking = true;
+        this.game.attack(this.settlement.name, name)
+            .pipe( finalize(() => {
+                this.isAttacking = false;
+            }))
+            .subscribe(report => {
+            this.dialog.open(CombatResultsComponent, {
+                data: report
+            });
+            return this.game.getSettlementData(this.settlementId)
+                .subscribe(settlement => this.updateSettlementData(settlement));
+        });
     }
 
     goTo(neighbor) {

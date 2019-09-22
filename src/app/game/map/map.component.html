@@ -1,9 +1,12 @@
-<button mat-flat-button (click)="this.trainSoldiers.emit()" [disabled]="!canTrainSoldiers() || soldiersIsTraining || !isOwner">
-
+<button mat-flat-button (click)="this.trainSoldiers.emit()" class="train-sold"
+        [disabled]="!canTrainSoldiers() || soldiersIsTraining || !isOwner">
     Train soldiers
     <mat-progress-bar mode="indeterminate" *ngIf="soldiersIsTraining"></mat-progress-bar>
 </button>
-<button mat-flat-button (click)="this.trainWorkers.emit()" [disabled]="settlement.canBuyWorker || workersHiring || !isOwner">
-    Train workers
+<button mat-flat-button (click)="this.trainWorkers.emit()" class="hire-work"
+        [disabled]="settlement.canBuyWorker || workersHiring || !isOwner">
+    Hire workers
     <mat-progress-bar mode="indeterminate" *ngIf="workersHiring"></mat-progress-bar>
 </button>
+
+<cm-building *ngFor="let building of settlement.buildings" [building]="building"></cm-building>

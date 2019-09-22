@@ -25,7 +25,11 @@ const routes: Routes = [
         resolve: {
           settlement: SettlmenetResolver
         }
-      }
+      },
+      {
+        path: '',
+        redirectTo: 'settlement'
+      },
     ]
   }
 ];

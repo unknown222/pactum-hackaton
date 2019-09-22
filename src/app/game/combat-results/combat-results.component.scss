@@ -1,0 +1,21 @@
+@import "variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  padding: $defaultGap;
+  flex: 1 0;
+}
+
+.bottom-content-wrapper {
+  width: 100%;
+
+  .mat-button {
+    width: 100%;
+    padding: $defaultGap *2;
+  }
+}

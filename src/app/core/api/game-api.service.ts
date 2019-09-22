@@ -2,6 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { Observable } from "rxjs";
 import { Settlement } from "../../entities/Settlement";
 import nearConfig from "./near.config";
+import { Report } from "../../entities/Report";
 
 declare const window: any;
 
@@ -23,8 +24,8 @@ export class GameApiService {
 
         // Initializing our contract APIs by contract name and configuration.
         window.contract = await window.near.loadContract(nearConfig.contractName, {
-            viewMethods: ["getAllSettelments", "getU64", "getSettlement", "getBuilding", "canBuyWorker", "getResources", "getAllPlayerSettelments", "getUpgradePrice", "getBaseBuildPrice", "getAllUpgradePrices" ],
-            changeMethods: [ "init", "commit", "checkAccess", "trainSoldiers", "buyWorkers", "upgradeBuilding" ],
+            viewMethods: [ "getAllSettelments", "getU64", "getSettlement", "getBuilding", "canBuyWorker", "getResources", "getAllPlayerSettelments", "getUpgradePrice", "getBaseBuildPrice", "getAllUpgradePrices" ],
+            changeMethods: [ "attack", "init", "commit", "checkAccess", "trainSoldiers", "buyWorkers", "upgradeBuilding" ],
             sender: window.walletAccount.getAccountId()
         });
 
@@ -43,6 +44,15 @@ export class GameApiService {
         return new Observable(subscriber => {
             this.connect().then(contract => {
                 subscriber.next(contract.account.accountId);
+                subscriber.complete();
+            })
+        })
+    }
+
+    getIsLoggedIn(): Observable<boolean> {
+        return new Observable(subscriber => {
+            this.connect().then(contract => {
+                subscriber.next(window.walletAccount && !!window.walletAccount.getAccountId());
                 subscriber.complete();
             })
         })
@@ -147,6 +157,19 @@ export class GameApiService {
                 contract.buyWorkers({ settlementName: name, n: String(1) })
                     .then(response => {
                         subscriber.next();
+                        subscriber.complete();
+                    })
+
+            })
+        })
+    }
+
+    attack(ownName, attackName): Observable<Report> {
+        return new Observable(subscriber => {
+            this.connect().then(contract => {
+                contract.attack({ settlementName: ownName, attackedSettlementName: attackName })
+                    .then(response => {
+                        subscriber.next(Report.fromRequest(response));
                         subscriber.complete();
                     })
 

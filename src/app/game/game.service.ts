@@ -15,6 +15,10 @@ export class GameService {
         return this.gameApi.getSettlementData(id);
     }
 
+    getIsLoggedIn() {
+        return this.gameApi.getIsLoggedIn();
+    }
+
     getOwnSettlements() {
         return this.gameApi.getAllPlayerSettlements();
     }
@@ -37,6 +41,10 @@ export class GameService {
 
     getAllSettlements() {
       return this.gameApi.getAllSettlements();
+    }
+
+    attack(ownName, attackName) {
+      return this.gameApi.attack(ownName, attackName);
     }
 
 

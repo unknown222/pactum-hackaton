@@ -5,10 +5,13 @@
   height: 100%;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 
   button {
     font-size: 18px;
     font-weight: 400;
     padding: $defaultGap/2 $defaultGap;
+    margin-bottom: $defaultGap;
+    width: 200px;
   }
 }
